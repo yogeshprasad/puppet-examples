@@ -1,5 +1,10 @@
 # Install Puppet 4 in a Master-Agent Setup on Ubuntu 14.04
 
+### Prerequisites
+* Root access to all of the servers
+* Each server should have a unique hostname
+* Each server should be in the same timezone
+
 ### Install puppet server
       $ cd ~ && wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb
       $ sudo dpkg -i puppetlabs-release-pc1-trusty.deb
@@ -21,7 +26,7 @@
       $ sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
       
 ### Sign the certificate in puppet server
-      $ sudo cert list
-      $ sudo cert sign --all
+      $ sudo /opt/puppetlabs/bin/puppet cert list
+      $ sudo /opt/puppetlabs/bin/puppet cert sign --all
             or
-      $sudo cert sign <agent host name>
+      $sudo /opt/puppetlabs/bin/puppet cert sign <agent host name>
